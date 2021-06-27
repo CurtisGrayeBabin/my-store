@@ -1,0 +1,7 @@
+<h1 [className]="'product-container'">{{ title }}</h1>
+<div [className]="'product-index'">
+    <div *ngFor="let product of productList">
+        <app-product-item [product]="product"></app-product-item>
+    </div>
+</div>
+

@@ -1,0 +1,18 @@
+/* 
+taken from Udacity repo:
+https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
+ */
+ 
+.product-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  margin-left: 48px;
+  margin-right: 48px;
+}
+  
+.product-container {
+  display: flex;
+  justify-content: center;
+}
