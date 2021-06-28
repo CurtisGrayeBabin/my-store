@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductItemComponent } from './product-item/product-item.component';
@@ -12,7 +14,9 @@ import { ProductItemDetailComponent } from './product-item-detail/product-item-d
     ProductItemDetailComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     ProductListComponent,

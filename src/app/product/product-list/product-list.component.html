@@ -1,6 +1,5 @@
-<h1 [className]="'product-container'">{{ title }}</h1>
-<div [className]="'product-index'">
-    <div *ngFor="let product of productList">
+<div class="product-index">
+    <div *ngFor="let product of products">
         <app-product-item [product]="product"></app-product-item>
     </div>
 </div>

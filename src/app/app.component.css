@@ -1,19 +1,16 @@
 /* 
 taken from Udacity repo:
 https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
+
+altered to make header sticky
 */
 
-* {
-  font-family: Arial;
-}
-
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   text-align: center;
   background: #33B5E5;
   color: #fff;
   padding: 12px;
-}
-  
-a {
-  color: #ffffff;
 }

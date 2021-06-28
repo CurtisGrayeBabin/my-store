@@ -7,9 +7,7 @@ https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 64px;
-  margin-left: 48px;
-  margin-right: 48px;
+  margin: 104px 64px 64px 64px;
 }
   
 .product-container {

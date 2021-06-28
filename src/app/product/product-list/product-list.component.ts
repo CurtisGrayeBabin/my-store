@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/Product';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,18 +10,16 @@ import { Product } from '../../models/Product';
 
 export class ProductListComponent implements OnInit {
 
-  title: string = "Product List Page (main page)";
+  products: Product[] = [];
 
-  // products for sale passed down from parent AppComponent
-  @Input() productList: Product[];
-
-  constructor() {
-    this.productList = []; // avoiding errors with this initialization
-   }
+  constructor(private productsService: ProductsService) {
+  }
 
   ngOnInit(): void {
-
-
+    // populate products array with Observable stream service
+    this.productsService.getProducts().subscribe(res => {
+      this.products = res;
+    });
   }
 
 }

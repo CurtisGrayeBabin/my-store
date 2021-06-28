@@ -1,2 +1,5 @@
-<!-- Supply list of products to product-list component to display -->
-<app-product-list [productList]="products"></app-product-list>
+<div class="header">
+    <h1>{{ storeName }}</h1>
+    <app-nav></app-nav>
+</div>
+<router-outlet></router-outlet>
