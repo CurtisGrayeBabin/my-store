@@ -12,14 +12,15 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private productsService: ProductsService) {
-  }
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit(): void {
     // populate products array with Observable stream service
-    this.productsService.getProducts().subscribe(res => {
+    this.productsService.getProductsStream().subscribe(res => {
       this.products = res;
     });
+
+
   }
 
 }

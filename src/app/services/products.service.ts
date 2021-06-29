@@ -9,10 +9,12 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductsService {
 
+    products: Product[] = [];
+
     constructor(private httpClient: HttpClient) {}
 
-    getProducts(): Observable<Product[]> {
-      // stream products within data.json
+    // stream products within data.json
+    getProductsStream(): Observable<Product[]> {
       return this.httpClient.get<Product[]>("../../assets/data.json");
     }
   

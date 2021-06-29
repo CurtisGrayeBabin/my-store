@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  productsString: string = "Product Catalog";
+  cartString: string = "Shopping Cart";
+
   constructor() { }
 
   ngOnInit(): void {

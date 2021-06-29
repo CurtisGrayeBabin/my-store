@@ -3,7 +3,7 @@ export class Product {
     name: string;
     price: number;
     url: string;
-    description: string
+    description: string;
 
     constructor(){
         this.id = 0;

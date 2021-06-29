@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
 import { NavigationModule } from './navigation/navigation.module';
+import { FormModule } from './form/form.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { AppComponent } from './app.component';
     ProductModule,
     NgbModule,
     CartModule,
-    NavigationModule
+    NavigationModule,
+    FormModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
