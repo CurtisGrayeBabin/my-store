@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Cart } from '../models/Cart';
+import { CartPayload } from '../models/CartPayload';
+import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,29 +13,26 @@ export class CartService {
   key: id
   value: {quantity:value, price:value}
   */
-  cart: Map<string, Cart> = new Map();
+  cart: Map<string, CartPayload> = new Map();
 
-  constructor() {
-    //this.cart = new Map();
-  }
+  constructor(private productService: ProductsService) {}
 
-  getCart(): Map<string, Cart> {
+  getCart(): Map<string, CartPayload> {
     return this.cart;
   }
 
-  addToCart(id: number, payload: Cart): Map<string, Cart> {
+  addToCart(id: number, payload: CartPayload): Map<string, CartPayload> {
 
     const stringId = id.toString();
     // if id already exists (item already in cart)
-    if( this.cart.has(stringId) ){
+    if( this.cart.get(stringId) ){
       const currentProductQuantity = Number(this.cart.get(stringId)?.quantity);
       payload.quantity += currentProductQuantity!;
     }
 
     this.cart.set(stringId, payload);
     
-    console.log(`Added to cart:${this.cart}`);
-    this.logCart();
+    //this.logCart();
 
     return this.cart;
   }
@@ -45,7 +43,9 @@ export class CartService {
       const v = this.cart.get(key)!;
       console.log(`Here is price:${v.price}`);
       console.log(`Here is quantity:${v.quantity}`);
+      console.log(``);
     }
+    console.log(`End of cart.`)
   }
 
   clearCart(): void {

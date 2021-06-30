@@ -1,4 +1,4 @@
-export class Cart {
+export class CartPayload {
     quantity: number;
     price: number;
 

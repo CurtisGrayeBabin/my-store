@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { Cart } from '../../models/Cart';
+import { CartPayload } from '../../models/CartPayload';
 
 @Component({
   selector: 'app-form',
@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
   }
 
   addToCart(): void {
-    const miniCart: Cart = {'price': this.price, 'quantity': Number(this.quantity)};
+    const miniCart: CartPayload = {'price': this.price, 'quantity': Number(this.quantity)};
     this.cartService.addToCart(this.id, miniCart);
     alert(this.submitAlertText);
   }

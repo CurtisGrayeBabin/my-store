@@ -1,3 +1,12 @@
 <div class="cart-container">
-    <h1>This is the cart page</h1>
+
+    <ng-container *ngFor="let key of cart.keys()">
+        <p>Here is key: {{ key }}</p>
+        <p>Here is price: {{ cart.get(key)?.price }}</p>
+        <p>Here is quantity: {{ cart.get(key)?.quantity }}</p>
+        <br>
+    </ng-container>
+    <div>
+        <h2>Total: {{ total | currency }}</h2>
+    </div>
 </div>
