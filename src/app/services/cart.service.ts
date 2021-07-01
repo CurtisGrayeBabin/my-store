@@ -14,6 +14,7 @@ export class CartService {
   value: {quantity:value, price:value}
   */
   cart: Map<string, CartPayload> = new Map();
+  removedFromCartAlertMessage: string = "Removed from cart!";
 
   constructor(private productService: ProductsService) {}
 
@@ -44,6 +45,7 @@ export class CartService {
 
     // item has been deleted from the cart - delete its key
     if(newQuantity<=0) {
+      alert(this.removedFromCartAlertMessage);
       this.cart.delete(stringId);
       return updatedPayload;
     }

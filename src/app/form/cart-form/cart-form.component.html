@@ -1,0 +1,28 @@
+<form>
+    <div class="form-group">
+        <label for="name">{{ nameLabel }}</label>
+        <input class="form-control" type="text" id="name" name="name" placeholder="{{ nameDefault }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="address">{{ addressLabel }}</label>
+        <input class="form-control" type="text" id="address" name="address" placeholder="{{ addressDefault }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="cc">{{ creditCardNumberLabel }}</label>
+        <input class="form-control" type="text" id="cc" name="cc" placeholder="{{ creditCardNumberDefault }}">
+    </div>
+
+    <div class="form-group">
+        <small id="tiny-message" class="form-text text-muted">{{ message }}</small>
+    </div>
+
+    <input 
+        type="submit" 
+        value="Submit" 
+        (click)="confirmation()"
+        class="btn btn-primary" 
+        style="margin-top: 8px"
+    >
+</form>

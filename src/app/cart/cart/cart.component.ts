@@ -20,7 +20,9 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.updateCartInfo();
+    this.cart = this.cartService.getCart();
+    this.cartKeys = [...this.cart.keys()];
+    this.total = this.cartService.getTotal();
   }
 
   updateCartInfo(): void {

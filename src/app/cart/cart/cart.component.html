@@ -8,7 +8,7 @@
 <!-- non-empty cart page -->
 <div *ngIf="total>0" class="cart-container">
 
-    <div class="cart-left">
+    <div>
         <div *ngFor="let key of cartKeys" class="vertical-cart-items">
             <app-cart-items (totalEmitter)="updateTotal($event)" [id]="key"></app-cart-items>
         </div>
@@ -18,8 +18,7 @@
     <div class="cart-panel"></div>
 
     <!-- to be replaced with new form component -->
-    
-    
+    <app-cart-form></app-cart-form>
 
 </div>
 

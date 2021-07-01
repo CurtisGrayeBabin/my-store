@@ -1,8 +1,4 @@
 
-.form-margin {
-    margin-bottom: 12px;
-}
-
 .cart-container {
     display: flex;
     flex-direction: row;
@@ -10,9 +6,6 @@
     margin-top: 128px;
 }
 
-.cart-left {
-    width:50%;
-}
 
 .cart-panel {
     margin-left: 50px;

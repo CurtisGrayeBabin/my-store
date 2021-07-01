@@ -4,6 +4,7 @@ import { CartComponent } from './cart/cart.component';
 import { CartItemsComponent } from './cart-items/cart-items.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { FormModule } from '../form/form.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    FormModule
   ],
   exports: [
     CartComponent,
