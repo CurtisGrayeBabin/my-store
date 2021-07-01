@@ -1,12 +1,26 @@
-<div class="cart-container">
-
-    <ng-container *ngFor="let key of cart.keys()">
-        <p>Here is key: {{ key }}</p>
-        <p>Here is price: {{ cart.get(key)?.price }}</p>
-        <p>Here is quantity: {{ cart.get(key)?.quantity }}</p>
-        <br>
-    </ng-container>
-    <div>
-        <h2>Total: {{ total | currency }}</h2>
-    </div>
+<!-- empty cart page -->
+<div *ngIf="total===0" class="empty-cart-message">
+    <h1 style="margin-top: 24px;">{{ emptyCartMessageTop }}</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Simple_shopping_cart.svg">
+    <h3>{{ emptyCartMessageBottom }} <a routerLink="/">{{ linkText }}</a>!</h3>
 </div>
+
+<!-- non-empty cart page -->
+<div *ngIf="total>0" class="cart-container">
+
+    <div class="cart-left">
+        <div *ngFor="let key of cartKeys" class="vertical-cart-items">
+            <app-cart-items (totalEmitter)="updateTotal($event)" [id]="key"></app-cart-items>
+        </div>
+        <h2 style="top: 124;">Total: {{ total | currency }}</h2>
+    </div>
+
+    <div class="cart-panel"></div>
+
+    <!-- to be replaced with new form component -->
+    
+    
+
+</div>
+
+

@@ -9,22 +9,29 @@ import { CartPayload } from '../../models/CartPayload';
 })
 export class CartComponent implements OnInit {
 
+  emptyCartMessageTop: string = "Your cart is empty!";
+  emptyCartMessageBottom: string = "Treat yourself via the";
+  linkText: string = "Product Catalog";
+
   cart: Map<string, CartPayload> = new Map();
+  cartKeys: string[] = [];
   total: number = 0;
   
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cart = this.cartService.getCart();
-    this.calculateTotal();
+    this.updateCartInfo();
   }
 
-  calculateTotal(): void {
-    this.total = 0;
-    for(let key of this.cart.keys()){
-      const payload = this.cart.get(key)!;
-      this.total += (payload.price * payload.quantity);
-    }
+  updateCartInfo(): void {
+    this.cart = this.cartService.getCart();
+    this.cartKeys = [...this.cart.keys()];
+    this.total = this.cartService.getTotal();
+  }
+
+  // updated from child component's form (cart-items)
+  updateTotal(total: number): void {
+    this.updateCartInfo();
   }
 
 }
