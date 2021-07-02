@@ -1,3 +1,7 @@
+/* 
+taken from Udacity repo:
+https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
+ */
 
 .cart-container {
     display: flex;
@@ -5,7 +9,6 @@
     justify-content: center;
     margin-top: 128px;
 }
-
 
 .cart-panel {
     margin-left: 50px;
@@ -22,7 +25,6 @@
 .vertical-cart-items {
     display: flex;
     flex-direction: column;
-
 }
 
 img {

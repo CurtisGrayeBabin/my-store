@@ -5,11 +5,13 @@ import { CartItemsComponent } from './cart-items/cart-items.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FormModule } from '../form/form.module';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
     CartComponent,
-    CartItemsComponent
+    CartItemsComponent,
+    ConfirmationComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { FormModule } from '../form/form.module';
   ],
   exports: [
     CartComponent,
-    CartItemsComponent
+    CartItemsComponent,
+    ConfirmationComponent
   ]
 })
 export class CartModule { }

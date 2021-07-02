@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../services/order.service';
+import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-form',
@@ -21,13 +24,15 @@ export class CartFormComponent implements OnInit {
   address : string = '';
   cc: string = '';
 
-  constructor() { }
+  constructor(private orderService: OrderService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
   }
 
   confirmation(): void {
-
+    this.orderService.setOrderInfo(this.fullName,this.address,this.cartService.getTotal());
+    this.cartService.clearCart();
+    this.router.navigateByUrl(`/cart/confirmation`);
   }
 
 }

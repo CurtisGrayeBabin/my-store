@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="addToCart()">
     <select id="quantity" name="quantity" class="form-select" [(ngModel)]="quantity">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -14,7 +14,6 @@
     <input 
         type="submit" 
         value="Add to cart" 
-        (click)="addToCart()"
         class="btn btn-primary" 
         style="margin-top: 8px"
     >
