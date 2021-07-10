@@ -40,5 +40,12 @@
     "price": 29.99,
     "url": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
     "description": "Wear it with style!"
+  },
+  {
+    "id": 7,
+    "name": "Tennis racket",
+    "price": 49.99,
+    "url": "https://shop.wilson.com/en-gb/media/catalog/product/cache/146/image/9df78eab33525d08d6e5fb8d27136e95/6/c/6c6fb62ac72b0af476f56a313e93343ccc5e1ae5_WRT30270U_Fusion_XL_DarkGray_Red_Matte_Front.jpg",
+    "description": "Smack balls with it!"
   }
 ]
