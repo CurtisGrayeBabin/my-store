@@ -1,5 +1,9 @@
 <div class="cart-item">
-    <img src="{{ product.url }}">
+    
+    <a routerLink="products/{{ numberId }}">
+        <img src="{{ product.url }}">
+    </a>
+    
     <div class="cart-item-details">
         <p><b>{{ product.name }}</b></p>
         <p>{{ product.price | currency }}</p>
