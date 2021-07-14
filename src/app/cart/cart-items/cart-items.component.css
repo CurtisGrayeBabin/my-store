@@ -19,7 +19,7 @@ img {
     justify-content: center;
     flex-direction: column;
     align-items: left;
-    margin-left: 48px;
+    margin-left: 24px;
 }
 
 .number-input {
