@@ -5,7 +5,7 @@ https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
 altered to make header sticky
 */
 
-.header {
+.nav-bar {
   position: fixed;
   top: 0;
   width: 100%;
@@ -13,4 +13,5 @@ altered to make header sticky
   background: #33B5E5;
   color: #fff;
   padding: 12px;
+  margin: 0;
 }
