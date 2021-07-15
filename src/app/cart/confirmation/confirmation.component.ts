@@ -20,12 +20,15 @@ export class ConfirmationComponent implements OnInit {
   finalLine: string = "Shipping approximation:";
   buttonText: string = "Return to catalog";
 
+  shippingTimeline: string = "";
+
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.name = this.orderService.getName();
     this.address = this.orderService.getAddress();
     this.total = this.orderService.getTotal();
+    this.shippingTimeline = this.orderService.getTimeline();
   }
 
 }

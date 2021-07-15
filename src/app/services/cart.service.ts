@@ -14,6 +14,7 @@ export class CartService {
   value: {quantity:value, price:value}
   */
   cart: Map<string, CartPayload> = new Map();
+  shipping: number = 0;
   removedFromCartAlertMessage: string = "Removed from cart!";
 
   constructor(private productService: ProductsService) {}
@@ -26,8 +27,12 @@ export class CartService {
     return this.cart.get(id.toString())!.quantity;
   }
 
+  setShipping(shipping: number): void {
+    this.shipping = shipping;
+  }
+
   getTotal(): number {
-    let total: number = 0;
+    let total: number = this.shipping;
 
     for(let key of this.cart.keys()){
       let payload: CartPayload = this.cart.get(key)!;
@@ -47,6 +52,9 @@ export class CartService {
     if(newQuantity<=0) {
       alert(this.removedFromCartAlertMessage);
       this.cart.delete(stringId);
+
+      if([...this.cart.keys()].length===0) this.shipping = 0;
+
       return updatedPayload;
     }
   
@@ -75,6 +83,7 @@ export class CartService {
 
   clearCart(): void {
     this.cart = new Map();
+    this.shipping = 0;
   }
 
 
@@ -88,7 +97,5 @@ export class CartService {
     }
     console.log(`End of cart.`)
   }
-
-
 
 }

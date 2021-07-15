@@ -8,13 +8,15 @@ export class OrderService {
   userName: string = '';
   userAddress: string = '';
   orderTotal: number = 0;
+  shippingTimeline: string = '';
 
   constructor() { }
 
-  setOrderInfo(name: string, address: string, total: number): void {
+  setOrderInfo(name: string, address: string, total: number, timeline: string): void {
     this.userName = name;
     this.userAddress = address;
     this.orderTotal = total;
+    this.shippingTimeline = timeline;
   }
 
   getName(): string {
@@ -27,6 +29,10 @@ export class OrderService {
 
   getTotal(): number {
     return this.orderTotal;
+  }
+
+  getTimeline(): string {
+    return this.shippingTimeline;
   }
 
 }

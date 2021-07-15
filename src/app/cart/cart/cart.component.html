@@ -1,5 +1,5 @@
 <!-- empty cart page -->
-<div *ngIf="total===0" class="empty-cart-message">
+<div *ngIf="cartKeys.length===0" class="empty-cart-message">
     <h1 style="margin-top: 24px;">{{ emptyCartMessageTop }}</h1>
     <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Simple_shopping_cart.svg">
     <h4>{{ emptyCartMessageBottom }} <a routerLink="/">{{ linkText }}</a>!</h4>
@@ -17,7 +17,7 @@
 
     <div class="cart-panel"></div>
 
-    <app-cart-form></app-cart-form>
+    <app-cart-form (totalEmitter)="updateTotal($event)"></app-cart-form>
 
 </div>
 
