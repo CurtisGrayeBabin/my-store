@@ -10,6 +10,17 @@ https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
     margin-top: 164px;
 }
 
+/* better cart display pararmeters on mobile */
+@media (max-width: 400px) {
+    .cart-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 164px;
+        padding: 12px;
+    }
+}
+
 .cart-panel {
     margin: 0px 36px;
 }
