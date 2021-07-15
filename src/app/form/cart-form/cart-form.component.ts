@@ -35,6 +35,10 @@ export class CartFormComponent implements OnInit {
   speedy: string = `Speedy shipping: ${this.speedyBusinessDays}`;
   overnight: string = `Overnight shipping: ${this.overnightBusinessDays}`;
 
+  checked1: boolean = true;
+  checked2: boolean = false;
+  checked3: boolean = false;
+
   freePrice: number = 0;
   speedyPrice: number = 7.99;
   overnightPrice: number = 29.99;
@@ -48,9 +52,16 @@ export class CartFormComponent implements OnInit {
 
   @Output() totalEmitter: EventEmitter<number> = new EventEmitter;
 
-  constructor(private orderService: OrderService, private router: Router, private cartService: CartService) { }
+  constructor(private orderService: OrderService, private router: Router, private cartService: CartService) { 
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.shipping = 0;
+    // reset the cart's shipping price
+    this.cartService.setShipping(this.shipping);
   }
 
   changeShipping(e: Event): void {
@@ -62,14 +73,23 @@ export class CartFormComponent implements OnInit {
     if(this.selectedRadioId===this.freeId){
       this.shipping=this.freePrice;
       this.shippingTimeline=this.freeBusinessDays;
+      this.checked1 = true;
+      this.checked2 = false;
+      this.checked3 = false;
     }
     else if(this.selectedRadioId===this.speedyId){
       this.shipping=this.speedyPrice;
       this.shippingTimeline=this.speedyBusinessDays;
+      this.checked1 = false;
+      this.checked2 = true;
+      this.checked3 = false;
     }
     else if(this.selectedRadioId===this.overnightId){
       this.shipping=this.overnightPrice;
       this.shippingTimeline=this.overnightBusinessDays;
+      this.checked1 = false;
+      this.checked2 = false;
+      this.checked3 = true;
     }
 
     // update the cart's shipping price

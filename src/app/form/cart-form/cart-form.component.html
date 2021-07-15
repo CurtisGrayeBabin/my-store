@@ -19,17 +19,17 @@
     </div>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" (change)="changeShipping($event)" name="flexRadioDefault" id="{{freeId}}" checked>
+        <input class="form-check-input" type="radio" (change)="changeShipping($event)" name="flexRadioDefault1" id="{{freeId}}" [checked]="checked1">
         <label class="form-check-label" for="free">{{free}} (<b>{{freePrice | currency}}</b>)</label>
     </div>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" (change)="changeShipping($event)" name="flexRadioDefault" id="{{speedyId}}">
+        <input class="form-check-input" type="radio" (change)="changeShipping($event)" name="flexRadioDefault2" id="{{speedyId}}" [checked]="checked2">
         <label class="form-check-label" for="speedy">{{speedy}} (<b>{{speedyPrice | currency}}</b>)</label>
     </div>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" (change)="changeShipping($event)" name="flexRadioDefault" id="{{overnightId}}">
+        <input class="form-check-input" type="radio" (change)="changeShipping($event)" name="flexRadioDefault3" id="{{overnightId}}" [checked]="checked3">
         <label class="form-check-label" for="overnight">{{overnight}} (<b>{{overnightPrice | currency}}</b>)</label>
     </div>
 
