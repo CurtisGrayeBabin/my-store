@@ -1,5 +1,19 @@
-<nav class="nav-bar">
-    <h1>{{ storeName }}</h1>
-    <app-nav></app-nav>
-</nav>
-<router-outlet></router-outlet>
+<!-- contained so that the footer can stick to the bottom of all content nicely -->
+<div class="app-container">
+    
+    <nav class="nav-bar">
+        <h1>{{ storeName }}</h1>
+        <app-nav></app-nav>
+    </nav>
+    <router-outlet></router-outlet>
+
+    <footer>
+        <h5>Created by Curtis Babin</h5>
+        <div>
+            <a href="{{linkedinUrl}}" target="_"><img src="{{linkedinImg}}" /></a>
+            &nbsp;
+            <a href="{{repoUrl}}" target="_"><img src="{{githubImg}}" /></a>
+        </div>
+    </footer>
+
+</div>
