@@ -53,15 +53,45 @@ export class CartFormComponent implements OnInit {
   @Output() totalEmitter: EventEmitter<number> = new EventEmitter;
 
   constructor(private orderService: OrderService, private router: Router, private cartService: CartService) { 
+  
+
   }
 
   ngOnInit(): void {
+
+        // radio button selection depends on which last shipping option was chosen, if any
+        const shippingStored = localStorage.getItem('shipping');
+    
+        if(shippingStored){
+          // second radio was selected 
+          if(shippingStored==="0"){
+            this.checked1 = true;
+            this.checked2 = false;
+            this.checked3 = false;
+          }
+          else if(shippingStored==="7.99"){
+            this.checked1 = false;
+            this.checked2 = true;
+            this.checked3 = false;
+          }
+          // third radio was selected
+          else{
+            this.checked1 = false;
+            this.checked2 = false;
+            this.checked3 = true;
+          }
+        }
+
   }
 
   ngOnDestroy(): void {
-    this.shipping = 0;
+    // commented these out since this was causing shipping to reset to 0 when visiting
+    // other pages
+
+    // this.shipping = 0;
     // reset the cart's shipping price
-    this.cartService.setShipping(this.shipping);
+    // this.cartService.setShipping(this.shipping);
+    // console.log(`hey hey hey setting shipping to 0`);
   }
 
   changeShipping(e: Event): void {

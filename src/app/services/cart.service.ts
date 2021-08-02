@@ -17,7 +17,60 @@ export class CartService {
   shipping: number = 0;
   removedFromCartAlertMessage: string = "Removed from cart!";
 
-  constructor(private productService: ProductsService) {}
+  // local storage keys
+  shippingKey: string = "shipping";
+  cartKey: string = "cart";
+
+  constructor(private productService: ProductsService) {
+
+    // getting shipping choice previously set from local storage
+    const shippingFromStorage = localStorage.getItem(this.shippingKey);
+
+    if(shippingFromStorage){
+      // shipping choice previously made => set default shipping to that value
+      this.shipping = +shippingFromStorage;
+      this.localStoreShipping(this.shipping);
+    }
+
+    // retrieve cart data from local storage if it exists there
+    this.loadCartFromLocalStorage();
+  }
+
+  // imports previous cart data
+  loadCartFromLocalStorage(): void {
+
+    const cartFromStorage = localStorage.getItem(this.cartKey);
+
+    if(cartFromStorage){
+      const cartArray = JSON.parse(cartFromStorage);
+      for(let i =0; i<cartArray.length; i++){
+        const cartObject = cartArray[i];
+        // update the actual cart (map)
+        this.cart.set(cartObject.key,{quantity:cartObject.quantity,price:cartObject.price});
+      }
+
+    }
+  }
+
+  // store shipping choice in local storage
+  localStoreShipping(price: number): void {
+    localStorage.setItem(this.shippingKey,price.toString());
+  }
+
+  // store representation of cart in local storage
+  localStoreCart(): void {
+    // store cart in string form of:
+    // [{key, quantity, price},...]
+    let cartRepresentation = [];
+
+    for(let key of this.cart.keys()){
+      let payload = this.cart.get(key)!;
+      cartRepresentation.push({key:key,quantity:payload.quantity,price:payload.price});
+    }
+    // now to store cartRepresentation into local storage
+    localStorage.setItem(this.cartKey, JSON.stringify(cartRepresentation));
+  }
+
 
   getCart(): Map<string, CartPayload> {
     return this.cart;
@@ -29,6 +82,8 @@ export class CartService {
 
   setShipping(shipping: number): void {
     this.shipping = shipping;
+    // store shipping choice in local storage
+    this.localStoreShipping(this.shipping);
   }
 
   getTotal(): number {
@@ -53,7 +108,11 @@ export class CartService {
       alert(this.removedFromCartAlertMessage);
       this.cart.delete(stringId);
 
-      if([...this.cart.keys()].length===0) this.shipping = 0;
+      if([...this.cart.keys()].length===0){
+        this.shipping = 0;
+        // store shipping choice in local storage
+        this.localStoreShipping(this.shipping);
+      }
 
       return updatedPayload;
     }
@@ -61,6 +120,8 @@ export class CartService {
     updatedPayload.quantity = newQuantity;
 
     this.cart.set(stringId,updatedPayload);
+    // store updated cart in local storage
+    this.localStoreCart();
 
     return updatedPayload;
   }
@@ -77,13 +138,17 @@ export class CartService {
     }
 
     this.cart.set(stringId, payload);
-    
+    // store updated cart in local storage
+    this.localStoreCart();
+
     return this.cart;
   }
 
   clearCart(): void {
     this.cart = new Map();
     this.shipping = 0;
+    // store shipping choice in local storage
+    this.localStoreShipping(this.shipping);
   }
 
 
