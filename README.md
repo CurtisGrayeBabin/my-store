@@ -1,14 +1,19 @@
 # MyStore
 
-Hello! This project is an e-commerce website prototype. It was built with Angular and it utilizes Bootstrap.
+Hello! This project is an e-commerce website prototype. It was built with `Angular` and it utilizes `Bootstrap`. This was the third project requirement of the Full Stack JavaScript Developer Nanodegree program offered by [Udacity](https://www.udacity.com/course/full-stack-javascript-developer-nanodegree--nd0067).
 
-This application makes use of services (such as modeling the cart) and components (for displaying products) as well as dynamic routing (for displaying product information pages when clicking product images). The products are loaded from a data.json file via the HttpClient and then fed into a ProductList component. 
+## Hosting link
 
-Be sure to run "npm i" when first opened to get the necessary dependencies to run this application.
-To run this application via the Angular CLI run "ng serve".
+This project is hosted by Amazon Web Services and can be reached [here](http://my-store-curtis-hosting.s3-website.us-east-2.amazonaws.com).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
+## Info
+This front-end application makes use of services (such as modeling the cart) and components (for displaying products) as well as dynamic routing (for displaying product information pages when clicking product images). Products are loaded from a `data.json` file via the HttpClient and then fed into a ProductList component.
 
-## Development server
+## Installation
+Run `npm install` to download the necessary dependencies.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm install -g @angular/cli` to download the necessary Angular CLI.
+
+## Running the store locally
+
+Run `npm run start` to start this application via the Angular CLI. The store application will be reachable via `http://localhost:4200/` in the browser.
