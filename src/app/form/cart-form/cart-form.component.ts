@@ -53,45 +53,38 @@ export class CartFormComponent implements OnInit {
   @Output() totalEmitter: EventEmitter<number> = new EventEmitter;
 
   constructor(private orderService: OrderService, private router: Router, private cartService: CartService) { 
-  
+  }
 
+  // set selected shipping button (1, 2, or 3)
+  setSelectedShippingOption(choice: Number): void {
+    this.checked1 = true;
+    this.checked2 = false;
+    this.checked3 = false;
+
+    switch(choice){
+      case 2:
+        this.checked1 = false;
+        this.checked2 = true;
+        this.checked3 = false;
+        break;
+      case 3:
+        this.checked1 = false;
+        this.checked2 = false;
+        this.checked3 = true;
+    }
   }
 
   ngOnInit(): void {
 
-        // radio button selection depends on which last shipping option was chosen, if any
-        const shippingStored = localStorage.getItem('shipping');
-    
-        if(shippingStored){
-          // second radio was selected 
-          if(shippingStored==="0"){
-            this.checked1 = true;
-            this.checked2 = false;
-            this.checked3 = false;
-          }
-          else if(shippingStored==="7.99"){
-            this.checked1 = false;
-            this.checked2 = true;
-            this.checked3 = false;
-          }
-          // third radio was selected
-          else{
-            this.checked1 = false;
-            this.checked2 = false;
-            this.checked3 = true;
-          }
-        }
+    // radio button selection depends on last shipping option was chosen, if any
+    const shippingStored = localStorage.getItem('shipping');
 
-  }
+    if(shippingStored){
+      if(shippingStored==="0") this.setSelectedShippingOption(1);
+      else if(shippingStored==="7.99") this.setSelectedShippingOption(2);
+      else this.setSelectedShippingOption(3);
+    }
 
-  ngOnDestroy(): void {
-    // commented these out since this was causing shipping to reset to 0 when visiting
-    // other pages
-
-    // this.shipping = 0;
-    // reset the cart's shipping price
-    // this.cartService.setShipping(this.shipping);
-    // console.log(`hey hey hey setting shipping to 0`);
   }
 
   changeShipping(e: Event): void {
@@ -103,23 +96,17 @@ export class CartFormComponent implements OnInit {
     if(this.selectedRadioId===this.freeId){
       this.shipping=this.freePrice;
       this.shippingTimeline=this.freeBusinessDays;
-      this.checked1 = true;
-      this.checked2 = false;
-      this.checked3 = false;
+      this.setSelectedShippingOption(1);
     }
     else if(this.selectedRadioId===this.speedyId){
       this.shipping=this.speedyPrice;
       this.shippingTimeline=this.speedyBusinessDays;
-      this.checked1 = false;
-      this.checked2 = true;
-      this.checked3 = false;
+      this.setSelectedShippingOption(2);
     }
     else if(this.selectedRadioId===this.overnightId){
       this.shipping=this.overnightPrice;
       this.shippingTimeline=this.overnightBusinessDays;
-      this.checked1 = false;
-      this.checked2 = false;
-      this.checked3 = true;
+      this.setSelectedShippingOption(3);
     }
 
     // update the cart's shipping price
@@ -130,7 +117,10 @@ export class CartFormComponent implements OnInit {
 
   confirmation(): void {
     this.orderService.setOrderInfo(this.fullName,this.address,this.cartService.getTotal(),this.shippingTimeline);
+    
+    // clear cart for a new order
     this.cartService.clearCart();
+    // go to confirmation route
     this.router.navigateByUrl(`/cart/confirmation`);
   }
 
