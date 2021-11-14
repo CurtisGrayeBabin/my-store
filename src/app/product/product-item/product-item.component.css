@@ -9,6 +9,8 @@ https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
   padding: 20px;
   margin: 6px 6px;        
   border: 1px solid #33B5E5;
+  min-height: 414px;
+  max-height: 414px;
 } 
   
 .product-container {

@@ -43,9 +43,23 @@
   },
   {
     "id": 7,
-    "name": "Tennis racket",
+    "name": "Baseball bat",
     "price": 49.99,
-    "url": "https://shop.wilson.com/en-gb/media/catalog/product/cache/146/image/9df78eab33525d08d6e5fb8d27136e95/6/c/6c6fb62ac72b0af476f56a313e93343ccc5e1ae5_WRT30270U_Fusion_XL_DarkGray_Red_Matte_Front.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Tony_Gwynn%27s_Bat-1.JPG",
     "description": "You'll always beat the competition!"
+  },
+  {
+    "id": 8,
+    "name": "Fancy pillows",
+    "price": 39.99,
+    "url": "https://p1.pxfuel.com/preview/741/251/816/chair-pillows-bible-open-book-devotions-worship.jpg",
+    "description": "You'll sleep well"
+  },
+  {
+    "id": 9,
+    "name": "Fancy chair",
+    "price": 99.99,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Mahogany_Campeche_chair_from_the_Louisiana_State_Museum.png",
+    "description": "The best chair ever made!"
   }
 ]
